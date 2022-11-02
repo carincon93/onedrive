@@ -18,12 +18,26 @@
 
                 <div class="p-14">
                     @forelse ($carpetas as $carpeta)
-                        <a href="{{ route('carpetas.show', $carpeta) }}" class="text-center inline-block">
-                            <figure>
-                                <img src="/images/folder.png" class="w-20" alt="">
-                            </figure>
-                            {{ $carpeta->nombre }}
-                        </a>
+                        <div class="w-48 flex flex-col items-center mb-4">
+
+                            <a href="{{ route('carpetas.show', $carpeta) }}" class="text-center inline-block">
+                                <figure>
+                                    <img src="/images/folder.png" class="w-20" alt="">
+                                </figure>
+                                {{ $carpeta->nombre }}
+                            </a>
+
+                            <form action="{{ route('carpetas.destroy', $carpeta) }}" class="mt-6" method="POST">
+                                @method('DELETE')
+                                @csrf
+
+                                <button>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </button>
+                            </form>
+                        </div>
                     @empty
                         Sin ítems
                     @endforelse

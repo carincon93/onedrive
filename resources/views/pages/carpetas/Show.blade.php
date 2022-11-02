@@ -10,7 +10,7 @@
             </a>
         @else
             <div class="font-semibold text-xl text-gray-800 leading-tight">
-                <a href="{{ route('dashboard') }}">
+                <a href="{{ route('carpetas.index') }}">
                     Mis documentos
                 </a>
                 / {{ $carpeta->nombre }}
