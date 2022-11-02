@@ -1,0 +1,108 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ namespacedModel }};
+use {{ rootNamespace }}Http\Controllers\Controller;
+use App\Http\Requests\{{ model }}Request;
+use Illuminate\Http\Request;
+
+class {{ class }} extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('pages/{{ model }}/Index', [
+            '{{ modelVariable }}' => {{ model }}::orderBy('id', 'ASC')->paginate(),
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('pages/{{ model }}/Create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store({{ model }}Request $request)
+    {
+        ${{ modelVariable }} = new {{ model }}();
+        ${{ modelVariable }}->fieldName = $request->fieldName;
+        ${{ modelVariable }}->fieldName = $request->fieldName;
+        ${{ modelVariable }}->fieldName = $request->fieldName;
+
+        ${{ modelVariable }}->save();
+
+        return redirect()->route(Nombre ruta'.index')->with('success', 'El recurso se ha creado correctamente.');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \{{ namespacedModel }}  ${{ modelVariable }}
+     * @return \Illuminate\Http\Response
+     */
+    public function show({{ model }} ${{ modelVariable }})
+    {
+        return view('pages/{{ model }}/Show', [
+            '{{ modelVariable }}' => ${{ modelVariable }}
+        ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \{{ namespacedModel }}  ${{ modelVariable }}
+     * @return \Illuminate\Http\Response
+     */
+    public function edit({{ model }} ${{ modelVariable }})
+    {
+        return view('pages/{{ model }}/Edit', [
+            '{{ modelVariable }}' => ${{ modelVariable }}
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \{{ namespacedModel }}  ${{ modelVariable }}
+     * @return \Illuminate\Http\Response
+     */
+    public function update({{ model }}Request $request, {{ model }} ${{ modelVariable }})
+    {
+        ${{ modelVariable }}->fieldName = $request->fieldName;
+        ${{ modelVariable }}->fieldName = $request->fieldName;
+        ${{ modelVariable }}->fieldName = $request->fieldName;
+
+        ${{ modelVariable }}->save();
+
+        return redirect()->back()->with('success', 'El recurso se ha actualizado correctamente.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \{{ namespacedModel }}  ${{ modelVariable }}
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy({{ model }} ${{ modelVariable }})
+    {
+        ${{ modelVariable }}->delete();
+
+        return redirect()->route(Nombre ruta'.index')->with('success', 'El recurso se ha eliminado correctamente.');
+    }
+}

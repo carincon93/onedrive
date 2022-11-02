@@ -1,0 +1,65 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class {{ class }} extends Model
+{
+    use HasFactory;
+
+    /**
+     * table
+     *
+     * @var string
+     */
+    protected $table = 'nombre_tabla_bd';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        //
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        //
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        //
+    ];
+
+    /**
+     * Relationship with FirstRelatedModel
+     *
+     * @return object
+     */
+    public function firstRelatedModel()
+    {
+        return $this->belongsTo(FirstRelatedModel::class);
+    }
+
+    /**
+     * Relationship with SecondRelatedModel
+     *
+     * @return object
+     */
+    public function secondRelatedModel()
+    {
+        return $this->hasOne(SecondRelatedModel::class);
+    }
+}
